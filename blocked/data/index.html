@@ -36,8 +36,8 @@
       .then(wptalk_result => {
         let output =
           '<table><thead><tr><th>순서</th><th>URL</th></thead><tbody>';
-        for (let i in wptalk_result) {
-          id = Number(i) + 1;
+        for (let i in wptalk_result.reverse()) {
+          id = wptalk_result.length - Number(i);
           output +=
             '<tr><td>' +
             id +
