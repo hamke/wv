@@ -2,11 +2,11 @@ const ads = [];
 
 // const ads = [
 //   {
-//     "click": 2,
+//     "click": 1,
 //     "url": "www.wp-viewer.com/main"
 //   },
 //   {
-//     "click": 3,
+//     "click": 2,
 //     "url": "chinatalk.net"
 //   }
 // ];

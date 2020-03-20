@@ -35,7 +35,7 @@ function displaySites(){
     let Sites = wptalk_result;
     let randomValue = Sites;
 
-    if ( typeof ads !== 'undefined' ) {
+    if ( typeof ads !== 'undefined' && ads.length > 0 ) {
       for ( var d = 0; d < ads.length; d++ ) {
         if ( clickCount == ads[d]['click'] ) {
           randomValue = ads[d]['url'];
