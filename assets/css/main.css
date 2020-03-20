@@ -11,6 +11,22 @@
   letter-spacing: 2px;
 }
 
+.marquee3k {
+  position: fixed;
+  width: 100%;
+  bottom: 45px;
+  padding: 2px 0;
+  letter-spacing: 1px;
+  color: #fff;
+  background-color: #333;
+  opacity: 0.95;
+  z-index: 999;
+}
+
+.marquee3k span {
+  margin-right: 3rem;
+}
+
 @media screen and (max-width: 760px) {
   .desktop-only {
     display: none;
