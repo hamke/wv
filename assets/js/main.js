@@ -1,6 +1,71 @@
-function detectProtocol() {
-  if(window.location.protocol != 'http:') {
-    location.href = location.href.replace("https://", "http://");
-  }
+const url = 'https://www.wp-data.com/api/random/1/';
+const uri = window.location.toString();
+const clean_uri = uri.substring(0, uri.indexOf("?"));
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+var urlInfo = urlParams.get('url');
+
+if ( !urlInfo.length ) {
+  var siteURL = 'www.wp-data.com';
+} else {
+  var siteURL = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
 }
-detectProtocol();
+
+var iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + siteURL + '/" frameborder="0" width="100%;"></iframe>';
+var footerUrl = '<a href="http://' + siteURL + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteURL + ' <i class="fas fa-arrow-right"></i></a>';
+var element = document.getElementById("placeholder");
+document.getElementById("iframeTemplate").innerHTML = iframeContent;
+var template = document.getElementById("iframeTemplate");
+var html = template.innerHTML;
+element.innerHTML = html;
+document.getElementById("footer-banner").innerHTML = footerUrl;
+
+function onLoadCallback() {
+  // Callback
+}
+
+function displaySites(){
+
+  clickCount++;
+
+  window.history.replaceState({}, document.title, clean_uri);
+  fetch(url)
+  .then(res => res.json())
+  .then(wptalk_result => {
+    let Sites = wptalk_result;
+    let randomValue = Sites;
+
+    if ( typeof ads !== 'undefined' ) {
+      for ( var d = 0; d < ads.length; d++ ) {
+        if ( clickCount == ads[d]['click'] ) {
+          randomValue = ads[d]['url'];
+        }
+      }
+    }
+
+    let new_uri = clean_uri + '?url=' + randomValue;
+    window.history.replaceState({}, document.title, new_uri);
+    // let randomValue = Sites[Math.round((Math.random()*1000))%Sites.length]; // If the server send array sites data
+    let iframeContent = '<iframe id="iframe" src="http://' + randomValue + '/" frameborder="0" width="100%;"></iframe>';
+    let footerUrl = '<a href="http://' + randomValue + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + randomValue + ' <i class="fas fa-arrow-right"></i></a>';
+    let element = document.getElementById("placeholder");
+    document.getElementById("iframeTemplate").innerHTML = iframeContent;
+    let template = document.getElementById("iframeTemplate");
+    let html = template.innerHTML;
+    element.innerHTML = html;
+    document.getElementById("footer-banner").innerHTML = footerUrl;
+  })
+}
+// window.onload = displaySites();
+
+var calcHeight = function() {
+  $('#iframe').height($(window).height());
+}
+$(document).ready(function() {
+  calcHeight();
+});
+$(window).resize(function() {
+  calcHeight();
+}).load(function() {
+  calcHeight();
+});
