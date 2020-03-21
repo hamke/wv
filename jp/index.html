@@ -143,8 +143,8 @@
   	</div>
 
     <div class="marquee3k" data-speed="0.5" data-pausable="true">
-      <span id="ticker-message">
-        ユーザーのデバイス/ネットワーク環境により、特定のWebサイトのローディング速度が遅くなる可能性があります。下のリンクをクリックして、サイトにアクセスすることができます。
+      <span class="message">
+        <!-- ユーザーのデバイス/ネットワーク環境により、特定のWebサイトのローディング速度が遅くなる可能性があります。下のリンクをクリックして、サイトにアクセスすることができます。 -->
       </span>
     </div>
 
@@ -155,6 +155,15 @@
   	<!-- Content : End -->
 
   </body>
+
+  <script>
+    const defaultMsg = "ユーザーのデバイス/ネットワーク環境により、特定のWebサイトのローディング速度が遅くなる可能性があります。下のリンクをクリックして、サイトにアクセスすることができます。";
+    var dm = document.getElementsByClassName("message");
+    var a;
+    for ( a = 0; a < dm.length; a++ ) {
+      dm[a].innerHTML = defaultMsg;
+    }
+  </script>
 
   <script id="iframeTemplate" type="text/html"></script>
   <script src="./../assets/js/main.js"></script>

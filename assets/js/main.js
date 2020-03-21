@@ -1,3 +1,19 @@
+function setDefaultMsg() {
+  var dm = document.getElementsByClassName("marquee3k");
+  var a;
+  for ( a = 0; a < dm.length; a++ ) {
+    dm[a].innerHTML = '<span class="message">' + defaultMsg + '</span>';
+  }
+}
+
+// function setDefaultMsg() {
+//   var dm = document.getElementsByClassName("marquee3k__copy");
+//   var a;
+//   for ( a = 0; a < dm.length; a++ ) {
+//     dm[a].innerHTML = defaultMsg;
+//   }
+// }
+
 const url = 'https://www.wp-data.com/api/random/1/';
 const uri = window.location.toString();
 const clean_uri = uri.substring(0, uri.indexOf("?"));
@@ -58,8 +74,16 @@ function displaySites(){
       for ( var m = 0; m < message.length; m++ ) {
         if ( randomValue == message[m]['url'] ) {
           // alert( message[m]['msg'] );
-          // console.log( message[m]['msg'] );
+          var classObj = document.getElementsByClassName("marquee3k");
+          var i;
+          for ( i = 0; i < classObj.length; i++ ) {
+            classObj[i].innerHTML = '<span class="message">' + message[m]['msg'] + '</span>';
+          }
+        } else {
+          // alert('Hello!');
+          setDefaultMsg();
         }
+        Marquee3k.init();
       }
     }
 

@@ -144,9 +144,8 @@
   	</div>
 
     <div class="marquee3k" id="marquee3k" data-speed="0.5" data-pausable="true">
-      <span id="message">
-        The loading of some WordPress sites may be slow or blocked, based on the user's device and current network conditions. You can directly visit the website by clicking the URL below.
-        <!-- You have this thing <a href="./" target="_blank">hooked up to the car?</a> -->
+      <span class="message">
+        <!-- The loading of some WordPress sites may be slow or blocked, based on the user's device and current network conditions. You can directly visit the website by clicking the URL below. -->
       </span>
     </div>
 
@@ -158,6 +157,15 @@
   	<!-- Content : End -->
 
   </body>
+
+  <script>
+    const defaultMsg = "The loading of some WordPress sites may be slow or blocked, based on the user's device and current network conditions. You can directly visit the website by clicking the URL below.";
+    var dm = document.getElementsByClassName("message");
+    var a;
+    for ( a = 0; a < dm.length; a++ ) {
+      dm[a].innerHTML = defaultMsg;
+    }
+  </script>
 
   <script id="iframeTemplate" type="text/html"></script>
   <script src="./assets/js/main.js"></script>

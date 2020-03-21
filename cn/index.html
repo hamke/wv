@@ -143,8 +143,8 @@
   	</div>
 
     <div class="marquee3k" data-speed="0.5" data-pausable="true">
-      <span id="ticker-message">
-        按照用户的设备或网络环境, 特定网站的打开速度可能过慢。点击下面的链接就可以直接访问该网站。
+      <span class="message">
+        <!-- 按照用户的设备或网络环境, 特定网站的打开速度可能过慢。点击下面的链接就可以直接访问该网站。 -->
       </span>
     </div>
 
@@ -155,6 +155,15 @@
   	<!-- Content : End -->
 
   </body>
+
+  <script>
+    const defaultMsg = "按照用户的设备或网络环境, 特定网站的打开速度可能过慢。点击下面的链接就可以直接访问该网站。";
+    var dm = document.getElementsByClassName("message");
+    var a;
+    for ( a = 0; a < dm.length; a++ ) {
+      dm[a].innerHTML = defaultMsg;
+    }
+  </script>
 
   <script id="iframeTemplate" type="text/html"></script>
   <script src="./../assets/js/main.js"></script>
