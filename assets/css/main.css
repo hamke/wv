@@ -18,7 +18,7 @@
   padding: 2px 0;
   letter-spacing: 1px;
   color: #fff;
-  font-size: 10px;
+  font-size: 0.7rem;
   background-color: #333;
   opacity: 0.95;
   z-index: 999;
@@ -33,6 +33,6 @@
     display: none;
   }
   .marquee3k {
-    font-size: 0.7rem;
+    font-size: 10px;
   }
 }
