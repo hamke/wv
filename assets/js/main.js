@@ -45,7 +45,6 @@ function displaySites(){
 
     let new_uri = clean_uri + '?url=' + randomValue;
     window.history.replaceState({}, document.title, new_uri);
-    // let randomValue = Sites[Math.round((Math.random()*1000))%Sites.length]; // If the server send array sites data
     let iframeContent = '<iframe id="iframe" src="http://' + randomValue + '/" frameborder="0" width="100%;"></iframe>';
     let footerUrl = '<a href="http://' + randomValue + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + randomValue + ' <i class="fas fa-arrow-right"></i></a>';
     let element = document.getElementById("placeholder");
@@ -54,6 +53,16 @@ function displaySites(){
     let html = template.innerHTML;
     element.innerHTML = html;
     document.getElementById("footer-banner").innerHTML = footerUrl;
+
+    if ( typeof message !== 'undefined' && message.length > 0 ) {
+      for ( var m = 0; m < message.length; m++ ) {
+        if ( randomValue == message[m]['url'] ) {
+          // alert( message[m]['msg'] );
+          // console.log( message[m]['msg'] );
+        }
+      }
+    }
+
   })
 }
 // window.onload = displaySites();
