@@ -24,8 +24,9 @@
   z-index: 999;
 }
 
-.marquee3k span {
-  margin-right: 3rem;
+.marquee3k__copy {
+  padding-right: 3rem;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 760px) {
