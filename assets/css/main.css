@@ -12,17 +12,16 @@
 }
 
 .overlay {
-  color: #c9c9c9;
-  height: 100%;
-  width: 0;
   position: fixed;
-  z-index: 1;
-  right: 0;
+  height: 100%;
   top: 0;
-  background-color: rgb(0, 0, 0);
+  /* width: 0; */
+  /* right: 0; */
+  color: #c9c9c9;
   background-color: rgba(0, 0, 0, 0.9);
   overflow-x: hidden;
-  transition: 0.5s;
+  /* transition: 0.5s; */
+  z-index: 1;
 }
 .overlay a {
   text-decoration: none;

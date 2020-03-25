@@ -7,8 +7,12 @@ function setDefaultMsg() {
 }
 
 function closeOverlay() {
-  document.getElementById("overlay").style.width = "0%";
-  document.getElementById("overlay-content").style.display = 'none';
+  var target = $("#overlay");
+  target.animate({
+    opacity: "-=1"
+  }, 1000, function() {
+    target.remove();
+  });
 }
 
 const url = 'https://www.wp-data.com/api/random/1/';
