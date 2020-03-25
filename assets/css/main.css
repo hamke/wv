@@ -11,6 +11,24 @@
   letter-spacing: 2px;
 }
 
+.marquee3k {
+  position: fixed;
+  width: 100%;
+  bottom: 45px;
+  padding: 3px 0;
+  letter-spacing: 1px;
+  color: #fff;
+  font-size: 0.7rem;
+  background-color: #222;
+  opacity: 0.95;
+  z-index: 99;
+}
+
+.marquee3k__copy {
+  padding-right: 3rem;
+  box-sizing: border-box;
+}
+
 .overlay {
   position: fixed;
   height: 100%;
@@ -21,7 +39,7 @@
   background-color: rgba(0, 0, 0, 0.9);
   overflow-x: hidden;
   /* transition: 0.5s; */
-  z-index: 1;
+  z-index: 100;
 }
 .overlay a {
   text-decoration: none;
@@ -57,23 +75,6 @@
   line-height: 2rem;
 }
 
-.whois-info,
-.see-more-wp-sites {
-  font-size: 80%;
-}
-
-@media screen and (min-width: 760px) {
-  .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu{
-    display: block;
-  }
-  nav .dropdown-menu{
-    margin-top: 0;
-  }
-  #footer-banner .footer-promo-text br {
-    display: none;
-  }
-}
-
 @media screen and (min-width: 480px) {
 
   .mobile-only {
@@ -86,36 +87,16 @@
   .desktop-only {
     display: none;
   }
-  .footer-text {
-    padding-bottom: 90px;
+  .marquee3k {
+    font-size: 10px;
   }
 }
 
-@media screen and (max-width: 600px) {
-
-  .custom-border-top {
-    border-top: 1px solid rgba(0,0,0,.1);
+@media screen and (max-width: 480px) {
+  .desktop-only {
+    display: none;
   }
-
-  .dropdown-menu {
-    border : none;
+  .marquee3k {
+    font-size: 9px;
   }
-
-  .navbar {
-    padding-left: .4rem !important;
-  }
-
-  .navbar-brand {
-    margin-right: 0 !important;
-  }
-
-  .navbar-brand img {
-    display: none !important;
-  }
-
-  .navbar-toggler {
-    padding: .25rem .5rem !important;
-    font-size: 1rem !important;
-  }
-
 }

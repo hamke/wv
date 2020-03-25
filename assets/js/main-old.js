@@ -6,14 +6,13 @@ function setDefaultMsg() {
   }
 }
 
-function closeOverlay() {
-  var target = $("#overlay");
-  target.animate({
-    opacity: "-=1"
-  }, 1000, function() {
-    target.remove();
-  });
-}
+// function setDefaultMsg() {
+//   var dm = document.getElementsByClassName("marquee3k__copy");
+//   var a;
+//   for ( a = 0; a < dm.length; a++ ) {
+//     dm[a].innerHTML = defaultMsg;
+//   }
+// }
 
 const url = 'https://www.wp-data.com/api/random/1/';
 const uri = window.location.toString();
@@ -89,9 +88,6 @@ function displaySites(){
     }
 
   })
-
-  closeOverlay();
-
 }
 // window.onload = displaySites();
 
