@@ -58,7 +58,7 @@
 }
 .overlay-content {
   position: relative;
-  top: 38%;
+  top: 32%;
   padding: 1rem;
   /* width: 100%; */
   text-align: center;
@@ -70,9 +70,15 @@
   color: #fcfcfc;
   margin-bottom: 1.3rem;
 }
+
 .overlay-content .guide {
   font-size: 0.9rem;
   line-height: 1.7rem;
+}
+
+.overlay-content .wp-logo img {
+  width: 60px;
+  margin-bottom: 1.1rem;
 }
 
 @media screen and (min-width: 480px) {
