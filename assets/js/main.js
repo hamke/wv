@@ -6,13 +6,10 @@ function setDefaultMsg() {
   }
 }
 
-// function setDefaultMsg() {
-//   var dm = document.getElementsByClassName("marquee3k__copy");
-//   var a;
-//   for ( a = 0; a < dm.length; a++ ) {
-//     dm[a].innerHTML = defaultMsg;
-//   }
-// }
+function closeOverlay() {
+  document.getElementById("overlay").style.width = "0%";
+  document.getElementById("overlay-content").style.display = 'none';
+}
 
 const url = 'https://www.wp-data.com/api/random/1/';
 const uri = window.location.toString();
@@ -41,6 +38,8 @@ function onLoadCallback() {
 }
 
 function displaySites(){
+
+  closeOverlay();
 
   clickCount++;
 

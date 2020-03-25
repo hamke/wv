@@ -11,38 +11,111 @@
   letter-spacing: 2px;
 }
 
-.marquee3k {
+.overlay {
+  color: #c9c9c9;
+  height: 100%;
+  width: 0;
   position: fixed;
-  width: 100%;
-  bottom: 45px;
-  padding: 3px 0;
-  letter-spacing: 1px;
+  z-index: 1;
+  right: 0;
+  top: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+.overlay a {
+  text-decoration: none;
+  color: #c9c9c9;
+  display: block;
+  transition: 0.3s;
+}
+.overlay a:hover, .overlay a:focus {
   color: #fff;
-  font-size: 0.7rem;
-  background-color: #222;
-  opacity: 0.95;
-  z-index: 999;
+}
+.overlay .closebtn {
+  position: absolute;
+  top: 4rem;
+  right: 2rem;
+  font-size: 40px !important;
+}
+.overlay-content {
+  position: relative;
+  top: 38%;
+  padding: 1rem;
+  /* width: 100%; */
+  text-align: center;
+}
+.overlay-content .title {
+  font-size: 1.7rem;
+  line-height: 2rem;
+  color: #fcfcfc;
+  margin-bottom: 1.3rem;
+}
+.overlay-content .guide {
+  font-size: 1rem;
+  line-height: 2rem;
 }
 
-.marquee3k__copy {
-  padding-right: 3rem;
-  box-sizing: border-box;
+.whois-info,
+.see-more-wp-sites {
+  font-size: 80%;
+}
+
+@media screen and (min-width: 760px) {
+  .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu{
+    display: block;
+  }
+  nav .dropdown-menu{
+    margin-top: 0;
+  }
+  #footer-banner .footer-promo-text br {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 480px) {
+
+  .mobile-only {
+    display: none;
+  }
+
 }
 
 @media screen and (max-width: 760px) {
   .desktop-only {
     display: none;
   }
-  .marquee3k {
-    font-size: 10px;
+  .footer-text {
+    padding-bottom: 90px;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .desktop-only {
-    display: none;
+@media screen and (max-width: 600px) {
+
+  .custom-border-top {
+    border-top: 1px solid rgba(0,0,0,.1);
   }
-  .marquee3k {
-    font-size: 9px;
+
+  .dropdown-menu {
+    border : none;
   }
+
+  .navbar {
+    padding-left: .4rem !important;
+  }
+
+  .navbar-brand {
+    margin-right: 0 !important;
+  }
+
+  .navbar-brand img {
+    display: none !important;
+  }
+
+  .navbar-toggler {
+    padding: .25rem .5rem !important;
+    font-size: 1rem !important;
+  }
+
 }

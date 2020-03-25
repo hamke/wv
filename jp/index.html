@@ -142,6 +142,19 @@
   		<iframe id="iframe" src="https://www.wp-data.com/jp/" frameborder="0" width="100%;"></iframe>
   	</div>
 
+    <div id="overlay" class="overlay" style="width:100%;">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeOverlay()">&times;</a>
+      <div id="overlay-content" class="overlay-content">
+        <div class="title">
+          WordPress Sites <br class="mobile-only">Random Viewer
+        </div>
+        <div class="guide">
+          "次のサイト"ボタンをクリックすると, WordPressサイト事例をご覧になれます<br>
+          Click "Next" Button to see more WordPress Sites
+        </div>
+      </div>
+    </div>
+
     <div class="marquee3k" data-speed="0.5" data-pausable="true">
       <span class="message">
         <!-- ユーザーのデバイス/ネットワーク環境により、特定のWebサイトのローディング速度が遅くなる可能性があります。下のリンクをクリックして、サイトにアクセスすることができます。 -->
@@ -157,7 +170,7 @@
   </body>
 
   <script>
-    const defaultMsg = "ユーザーのデバイス/ネットワーク環境により、特定のWebサイトのローディング速度が遅くなる可能性があります。下のリンクをクリックして、サイトにアクセスすることができます。";
+    const defaultMsg = "ユーザーのデバイス/ネットワーク環境により、特定のWebサイトのローディング速度が遅くなる可能性があります。下記のリンクをクリックして、サイトにアクセスすることができます。";
     var dm = document.getElementsByClassName("message");
     var a;
     for ( a = 0; a < dm.length; a++ ) {
