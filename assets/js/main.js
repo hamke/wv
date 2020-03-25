@@ -26,6 +26,7 @@ if ( !urlInfo.length ) {
   var siteURL = 'www.wp-data.com';
 } else {
   var siteURL = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+  closeOverlay();
 }
 
 var iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + siteURL + '/" frameborder="0" width="100%;"></iframe>';
