@@ -1,9 +1,11 @@
 function setDefaultMsg() {
-  var dm = document.getElementsByClassName("marquee3k");
-  var a;
-  for ( a = 0; a < dm.length; a++ ) {
-    dm[a].innerHTML = '<span class="message">' + defaultMsg + '</span>';
-  }
+  var dm = document.getElementById("marquee3k");
+  dm.innerHTML = '<span class="message">' + defaultMsg + '</span>';
+}
+
+function setCustomMsg(msg) {
+  var cm = document.getElementById("marquee3k");
+  cm.innerHTML = '<span class="message">' + msg + '</span>';
 }
 
 function closeOverlay() {
@@ -56,7 +58,10 @@ function displaySites(){
     if ( typeof ads !== 'undefined' && ads.length > 0 ) {
       for ( var d = 0; d < ads.length; d++ ) {
         if ( clickCount == ads[d]['click'] ) {
-          randomValue = ads[d]['url'];
+          if ( ( ( parseTime(ads[d]['time_start']) < todayData ) || ( ads[d]['time_start'] == '' ) ) && ( ( parseTime(ads[d]['time_end']) > todayData ) || ( ads[d]['time_end'] == '' ) ) ) {
+            randomValue = ads[d]['url'];
+            break;
+          }
         }
       }
     }
@@ -75,18 +80,17 @@ function displaySites(){
     if ( typeof message !== 'undefined' && message.length > 0 ) {
       for ( var m = 0; m < message.length; m++ ) {
         if ( randomValue == message[m]['url'] ) {
-          // alert( message[m]['msg'] );
-          var classObj = document.getElementsByClassName("marquee3k");
-          var i;
-          for ( i = 0; i < classObj.length; i++ ) {
-            classObj[i].innerHTML = '<span class="message">' + message[m]['msg'] + '</span>';
+          if ( ( ( parseTime(message[m]['time_start']) < todayData ) || ( message[m]['time_start'] == '' ) ) && ( ( parseTime(message[m]['time_end']) > todayData ) || ( message[m]['time_end'] == '' ) ) ) {
+            setCustomMsg(message[m]['msg']);
+            break;
+          } else {
+            setDefaultMsg();
           }
         } else {
-          // alert('Hello!');
           setDefaultMsg();
         }
-        Marquee3k.init();
       }
+      Marquee3k.init();
     }
 
   })
