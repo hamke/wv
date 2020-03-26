@@ -1,11 +1,13 @@
 function setDefaultMsg() {
   var dm = document.getElementById("marquee3k");
   dm.innerHTML = '<span class="message">' + defaultMsg + '</span>';
+  Marquee3k.init();
 }
 
 function setCustomMsg(msg) {
   var cm = document.getElementById("marquee3k");
   cm.innerHTML = '<span class="message">' + msg + '</span>';
+  Marquee3k.init();
 }
 
 function closeOverlay() {
@@ -90,7 +92,7 @@ function displaySites(){
           setDefaultMsg();
         }
       }
-      Marquee3k.init();
+      // Marquee3k.init();
     }
 
   })

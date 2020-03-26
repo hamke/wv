@@ -6,15 +6,15 @@ const ads = [
   //   "time_end": ""
   // },
   // {
-  //   "click": 1,
+  //   "click": 2,
   //   "url": "chinatalk.net",
   //   "time_start": "",
   //   "time_end": ""
   // },
-  // {
-  //   "click": 2,
-  //   "url": "www.wp-viewer.com/main",
-  //   "time_start": "2020-03-06 00:00:00",
-  //   "time_end": "2020-03-28 00:00:00"
-  // }
+  {
+    "click": 5,
+    "url": "chinatalk.net",
+    "time_start": "",
+    "time_end": ""
+  },
 ];

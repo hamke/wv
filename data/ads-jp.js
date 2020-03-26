@@ -12,8 +12,8 @@ const ads = [
   //   "time_end": ""
   // },
   // {
-  //   "click": 2,
-  //   "url": "www.wp-viewer.com/main",
+  //   "click": 1,
+  //   "url": "N/A",
   //   "time_start": "2020-03-06 00:00:00",
   //   "time_end": "2020-03-28 00:00:00"
   // }
