@@ -34,14 +34,17 @@ function displaySites(){
 
     if ( typeof ads !== 'undefined' && ads.length > 0 ) {
       for ( var d = 0; d < ads.length; d++ ) {
-        if ( clickCount == ads[d]['click'] ) {
+        if ( ( clickCount == ads[d]['click'] ) && ( ads[d]['click'] !== '' ) && ( ads[d]['click'] > 0 ) ) {
           if ( ( ( parseTime(ads[d]['time_start']) < todayData ) || ( ads[d]['time_start'] == '' ) ) && ( ( parseTime(ads[d]['time_end']) > todayData ) || ( ads[d]['time_end'] == '' ) ) ) {
             randomValue = ads[d]['url'];
-            if ( ads[d]['url_target'] !== '' ) {
-              document.getElementById("overlay-ad").style.display="block";
-              break;
-            }
+            break;
           }
+        }
+      }
+      for ( var e = 0; e < ads.length; e++ ) {
+        if ( ads[e]['url'] == randomValue && ads[e]['url_target'] !== '' ) {
+          document.getElementById("overlay-ad").style.display="block";
+          break;
         }
       }
     }
