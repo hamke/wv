@@ -1,13 +1,13 @@
 if ( !urlInfo.length ) {
-  var siteURL = 'www.wp-data.com';
+  var siteUrl = 'www.wp-data.com';
 } else {
-  var siteURL = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+  var siteUrl = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
   closeOverlay();
 }
 
-var fullUrl = 'http://' + siteURL;
-var iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + siteURL + '/" frameborder="0" width="100%;"></iframe>';
-var footerUrl = '<a href="http://' + siteURL + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteURL + ' <i class="fas fa-arrow-right"></i></a>';
+var fullUrl = 'http://' + siteUrl;
+var iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + siteUrl + '/" frameborder="0" width="100%;"></iframe>';
+var footerUrl = '<a href="http://' + siteUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteUrl + ' <i class="fas fa-arrow-right"></i></a>';
 var element = document.getElementById("placeholder");
 document.getElementById("iframeTemplate").innerHTML = iframeContent;
 var template = document.getElementById("iframeTemplate");
@@ -27,8 +27,8 @@ function displaySites(){
   fetch(url)
   .then(res => res.json())
   .then(wptalk_result => {
-    var siteURL = wptalk_result;
-    let randomValue = siteURL;
+    var siteUrl = wptalk_result;
+    let randomValue = siteUrl;
 
     document.getElementById("overlay-ad").style.display="none";
 
@@ -88,9 +88,18 @@ function adClick() {
   if ( typeof ads !== 'undefined' && ads.length > 0 ) {
     for ( var z = 0; z < ads.length; z++ ) {
       if ( currentUrl == ( 'http://' + ads[z]['url'] + '/' ) ) {
-        window.open( currentUrl, "_blank");
+        window.open( ads[z]['url_target'], "_blank");
         break;
       }
+    }
+  }
+}
+
+if ( typeof ads !== 'undefined' && ads.length > 0 ) {
+  for ( var f = 0; f < ads.length; f++ ) {
+    if ( ads[f]['url'] == siteUrl && ads[f]['url_target'] !== '' ) {
+      document.getElementById("overlay-ad").style.display="block";
+      break;
     }
   }
 }
