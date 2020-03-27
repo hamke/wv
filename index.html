@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome-animation.min.css">
     <link rel="stylesheet" href="./assets/css/default.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="./assets/js/init.js"></script>
     <script src="./assets/js/date.js"></script>
     <script src="./data/ads.js"></script>
     <script src="./data/message.js"></script>
@@ -144,7 +145,7 @@
   		<iframe id="iframe" src="https://www.wp-data.com/" frameborder="0" width="100%;"></iframe>
   	</div>
 
-    <div id="overlay" class="overlay" style="width:100%;">
+    <div id="overlay" class="overlay">
       <a href="javascript:void(0)" class="closebtn" onclick="closeOverlay()">&times;</a>
       <div id="overlay-content" class="overlay-content">
         <div class="wp-logo">
@@ -157,6 +158,9 @@
           Click "Next" Button to see more WordPress Sites
         </div>
       </div>
+    </div>
+
+    <div id="overlay-ad" class="overlay-ad" onclick="adClick()" style="display:none;">
     </div>
 
     <div class="marquee3k" id="marquee3k" data-speed="0.5" data-pausable="true">

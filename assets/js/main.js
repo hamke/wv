@@ -1,31 +1,3 @@
-function setDefaultMsg() {
-  var dm = document.getElementById("marquee3k");
-  dm.innerHTML = '<span class="message">' + defaultMsg + '</span>';
-  Marquee3k.init();
-}
-
-function setCustomMsg(msg) {
-  var cm = document.getElementById("marquee3k");
-  cm.innerHTML = '<span class="message">' + msg + '</span>';
-  Marquee3k.init();
-}
-
-function closeOverlay() {
-  var target = $("#overlay");
-  target.animate({
-    opacity: "-=1"
-  }, 1000, function() {
-    target.remove();
-  });
-}
-
-const url = 'https://www.wp-data.com/api/random/1/';
-const uri = window.location.toString();
-const clean_uri = uri.substring(0, uri.indexOf("?"));
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-var urlInfo = urlParams.get('url');
-
 if ( !urlInfo.length ) {
   var siteURL = 'www.wp-data.com';
 } else {
@@ -33,6 +5,7 @@ if ( !urlInfo.length ) {
   closeOverlay();
 }
 
+var fullUrl = 'http://' + siteURL;
 var iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + siteURL + '/" frameborder="0" width="100%;"></iframe>';
 var footerUrl = '<a href="http://' + siteURL + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteURL + ' <i class="fas fa-arrow-right"></i></a>';
 var element = document.getElementById("placeholder");
@@ -54,15 +27,20 @@ function displaySites(){
   fetch(url)
   .then(res => res.json())
   .then(wptalk_result => {
-    let Sites = wptalk_result;
-    let randomValue = Sites;
+    var siteURL = wptalk_result;
+    let randomValue = siteURL;
+
+    document.getElementById("overlay-ad").style.display="none";
 
     if ( typeof ads !== 'undefined' && ads.length > 0 ) {
       for ( var d = 0; d < ads.length; d++ ) {
         if ( clickCount == ads[d]['click'] ) {
           if ( ( ( parseTime(ads[d]['time_start']) < todayData ) || ( ads[d]['time_start'] == '' ) ) && ( ( parseTime(ads[d]['time_end']) > todayData ) || ( ads[d]['time_end'] == '' ) ) ) {
             randomValue = ads[d]['url'];
-            break;
+            if ( ads[d]['url_target'] !== '' ) {
+              document.getElementById("overlay-ad").style.display="block";
+              break;
+            }
           }
         }
       }
@@ -101,6 +79,18 @@ function displaySites(){
 
 }
 // window.onload = displaySites();
+
+function adClick() {
+  var currentUrl = document.getElementById("footer-banner").querySelector('a').href; // http://example.com ;
+  if ( typeof ads !== 'undefined' && ads.length > 0 ) {
+    for ( var z = 0; z < ads.length; z++ ) {
+      if ( currentUrl == ( 'http://' + ads[z]['url'] + '/' ) ) {
+        window.open( currentUrl, "_blank");
+        break;
+      }
+    }
+  }
+}
 
 var calcHeight = function() {
   $('#iframe').height($(window).height());
