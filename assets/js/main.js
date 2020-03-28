@@ -1,4 +1,12 @@
-var fullUrl = 'http://' + siteUrl;
+if ( urlInfo == null || urlInfo == '' ) {
+  var siteUrl = frontpage; // A variable defined on the beginning of the page
+  window.history.replaceState({}, document.title, clean_uri);
+} else {
+  var siteUrl = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+  closeOverlay();
+}
+
+// var fullUrl = 'http://' + siteUrl; // Unnecessary
 var iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + siteUrl + '/" frameborder="0" width="100%;"></iframe>';
 var footerUrl = '<a href="http://' + siteUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteUrl + ' <i class="fas fa-arrow-right"></i></a>';
 var element = document.getElementById("placeholder");
@@ -49,8 +57,6 @@ function onLoadCallback() {
 function displaySites() {
 
   clickCount++;
-
-  // window.history.replaceState({}, document.title, clean_uri);
 
   document.getElementById("overlay-ad").style.display="none";
 

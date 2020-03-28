@@ -25,10 +25,3 @@ function setCustomMsg(msg) {
   cm.innerHTML = '<span class="message">' + msg + '</span>';
   Marquee3k.init();
 }
-
-if ( urlInfo == null ) {
-  var siteUrl = 'www.wp-data.com';
-} else {
-  var siteUrl = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
-  closeOverlay();
-}
