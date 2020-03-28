@@ -1,10 +1,3 @@
-if ( !urlInfo.length ) {
-  var siteUrl = 'www.wp-data.com';
-} else {
-  var siteUrl = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
-  closeOverlay();
-}
-
 var fullUrl = 'http://' + siteUrl;
 var iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + siteUrl + '/" frameborder="0" width="100%;"></iframe>';
 var footerUrl = '<a href="http://' + siteUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteUrl + ' <i class="fas fa-arrow-right"></i></a>';
@@ -15,71 +8,74 @@ var html = template.innerHTML;
 element.innerHTML = html;
 document.getElementById("footer-banner").innerHTML = footerUrl;
 
+function showNewData( newUrl ) {
+  if ( typeof ads !== 'undefined' && ads.length > 0 ) {
+    for ( var e = 0; e < ads.length; e++ ) {
+      if ( ads[e]['url'] == newUrl && ads[e]['url_target'] !== '' ) {
+        document.getElementById("overlay-ad").style.display="block";
+        break;
+      }
+    }
+    for ( var m = 0; m < message.length; m++ ) {
+      if ( newUrl == message[m]['url'] ) {
+        if ( ( ( parseTime(message[m]['time_start']) < todayData ) || ( message[m]['time_start'] == '' ) ) && ( ( parseTime(message[m]['time_end']) > todayData ) || ( message[m]['time_end'] == '' ) ) ) {
+          setCustomMsg(message[m]['msg']);
+          break;
+        } else {
+          setDefaultMsg();
+        }
+      } else {
+        setDefaultMsg();
+      }
+    }
+  }
+  let new_uri = clean_uri + '?url=' + newUrl;
+  window.history.replaceState({}, document.title, new_uri);
+  let iframeContent = '<iframe id="iframe" src="http://' + newUrl + '/" frameborder="0" width="100%;"></iframe>';
+  let footerUrl = '<a href="http://' + newUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + newUrl + ' <i class="fas fa-arrow-right"></i></a>';
+  let element = document.getElementById("placeholder");
+  document.getElementById("iframeTemplate").innerHTML = iframeContent;
+  let template = document.getElementById("iframeTemplate");
+  let html = template.innerHTML;
+  element.innerHTML = html;
+  document.getElementById("footer-banner").innerHTML = footerUrl;
+  closeOverlay();
+}
+
 function onLoadCallback() {
   // Callback
 }
 
-function displaySites(){
+function displaySites() {
 
   clickCount++;
 
-  window.history.replaceState({}, document.title, clean_uri);
-  fetch(url)
-  .then(res => res.json())
-  .then(wptalk_result => {
-    var siteUrl = wptalk_result;
-    let randomValue = siteUrl;
+  // window.history.replaceState({}, document.title, clean_uri);
 
-    document.getElementById("overlay-ad").style.display="none";
+  document.getElementById("overlay-ad").style.display="none";
 
-    if ( typeof ads !== 'undefined' && ads.length > 0 ) {
-      for ( var d = 0; d < ads.length; d++ ) {
-        if ( ( clickCount == ads[d]['click'] ) && ( ads[d]['click'] !== '' ) && ( ads[d]['click'] > 0 ) ) {
-          if ( ( ( parseTime(ads[d]['time_start']) < todayData ) || ( ads[d]['time_start'] == '' ) ) && ( ( parseTime(ads[d]['time_end']) > todayData ) || ( ads[d]['time_end'] == '' ) ) ) {
-            randomValue = ads[d]['url'];
-            break;
-          }
-        }
-      }
-      for ( var e = 0; e < ads.length; e++ ) {
-        if ( ads[e]['url'] == randomValue && ads[e]['url_target'] !== '' ) {
-          document.getElementById("overlay-ad").style.display="block";
+  if ( typeof ads !== 'undefined' && ads.length > 0 ) {
+    for ( var d = 0; d < ads.length; d++ ) {
+      if ( ( clickCount == ads[d]['click'] ) && ( ads[d]['click'] !== '' ) && ( ads[d]['click'] > 0 ) ) {
+        if ( ( ( parseTime(ads[d]['time_start']) < todayData ) || ( ads[d]['time_start'] == '' ) ) && ( ( parseTime(ads[d]['time_end']) > todayData ) || ( ads[d]['time_end'] == '' ) ) ) {
+          var randomValue = ads[d]['url'];
           break;
         }
       }
     }
+  }
 
-    let new_uri = clean_uri + '?url=' + randomValue;
-    window.history.replaceState({}, document.title, new_uri);
-    let iframeContent = '<iframe id="iframe" src="http://' + randomValue + '/" frameborder="0" width="100%;"></iframe>';
-    let footerUrl = '<a href="http://' + randomValue + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + randomValue + ' <i class="fas fa-arrow-right"></i></a>';
-    let element = document.getElementById("placeholder");
-    document.getElementById("iframeTemplate").innerHTML = iframeContent;
-    let template = document.getElementById("iframeTemplate");
-    let html = template.innerHTML;
-    element.innerHTML = html;
-    document.getElementById("footer-banner").innerHTML = footerUrl;
-
-    if ( typeof message !== 'undefined' && message.length > 0 ) {
-      for ( var m = 0; m < message.length; m++ ) {
-        if ( randomValue == message[m]['url'] ) {
-          if ( ( ( parseTime(message[m]['time_start']) < todayData ) || ( message[m]['time_start'] == '' ) ) && ( ( parseTime(message[m]['time_end']) > todayData ) || ( message[m]['time_end'] == '' ) ) ) {
-            setCustomMsg(message[m]['msg']);
-            break;
-          } else {
-            setDefaultMsg();
-          }
-        } else {
-          setDefaultMsg();
-        }
-      }
-      // Marquee3k.init();
-    }
-
-  })
-
-  closeOverlay();
-
+  if ( typeof randomValue == 'undefined' ) {
+    fetch(url)
+    .then(res => res.json())
+    .then(wptalk_result => {
+      var siteUrl = wptalk_result;
+      var randomValue = siteUrl;
+      showNewData(randomValue);
+    })
+  } else {
+    showNewData(randomValue);
+  }
 }
 // window.onload = displaySites();
 
