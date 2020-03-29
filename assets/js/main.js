@@ -1,9 +1,21 @@
-if ( urlInfo == null || urlInfo == '' ) {
-  var siteUrl = frontpage; // A variable defined on the beginning of the page
-  window.history.replaceState({}, document.title, clean_uri);
-} else {
-  var siteUrl = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
-  closeOverlay();
+if ( typeof full_url_allowed !== 'undefined' && full_url_allowed.length > 0 ) {
+  for ( var c = 0; c < full_url_allowed.length; c++ ) {
+    if ( urlInfo == full_url_allowed[c]['url'] ) {
+      var siteUrl = full_url_allowed[c]['url'];
+      closeOverlay();
+      break;
+    }
+  }
+}
+
+if ( typeof siteUrl == 'undefined' ) {
+  if ( urlInfo == null || urlInfo == '' ) {
+    var siteUrl = frontpage; // A variable defined on the beginning of the page
+    window.history.replaceState({}, document.title, clean_uri);
+  } else {
+    var siteUrl = urlInfo.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0];
+    closeOverlay();
+  }
 }
 
 // var fullUrl = 'http://' + siteUrl; // Unnecessary
