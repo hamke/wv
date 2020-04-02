@@ -19,7 +19,7 @@ if ( typeof siteUrl == 'undefined' ) {
 }
 
 // var fullUrl = 'http://' + siteUrl; // Unnecessary
-var iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + siteUrl + '/" frameborder="0" width="100%;"></iframe>';
+var iframeContent = '<iframe id="iframe" src="http://' + siteUrl + '/" frameborder="0" width="100%;"></iframe>';
 var footerUrl = '<a href="http://' + siteUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteUrl + ' <i class="fas fa-arrow-right"></i></a>';
 var element = document.getElementById("placeholder");
 document.getElementById("iframeTemplate").innerHTML = iframeContent;
@@ -51,7 +51,7 @@ function showNewData( newUrl ) {
   }
   let new_uri = clean_uri + '?url=' + newUrl;
   window.history.replaceState({}, document.title, new_uri);
-  let iframeContent = '<iframe id="iframe" src="http://' + newUrl + '/" frameborder="0" width="100%;"></iframe>';
+  let iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + newUrl + '/" frameborder="0" width="100%;"></iframe>';
   let footerUrl = '<a href="http://' + newUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + newUrl + ' <i class="fas fa-arrow-right"></i></a>';
   let element = document.getElementById("placeholder");
   document.getElementById("iframeTemplate").innerHTML = iframeContent;
@@ -63,7 +63,8 @@ function showNewData( newUrl ) {
 }
 
 function onLoadCallback() {
-  // Callback
+  // alert('Fully loaded!');
+  $('#overlay-loading').fadeOut('slow');
 }
 
 function displaySites() {
@@ -94,6 +95,8 @@ function displaySites() {
   } else {
     showNewData(randomValue);
   }
+
+  $('#overlay-loading').fadeIn();
 
 }
 // window.onload = displaySites();

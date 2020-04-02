@@ -1,3 +1,4 @@
+// const url = 'http://xxxxxxxx.com/i/wp-data/public/api/random/1/';
 const url = 'https://www.wp-data.com/api/random/1/';
 const uri = window.location.toString();
 const clean_uri = uri.substring(0, uri.indexOf("?"));

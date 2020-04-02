@@ -13,6 +13,7 @@ body {
   opacity: 0.9;
   font-size: 1rem;
   letter-spacing: 2px;
+  z-index: 98;
 }
 
 .marquee3k {
@@ -45,6 +46,19 @@ body {
   z-index: 100;
 }
 
+.overlay-loading {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  color: #c9c9c9;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow-x: hidden;
+  /* transition: 0.5s; */
+  z-index: 97;
+}
+
+.overlay-loading a,
 .overlay a {
   text-decoration: none;
   color: #c9c9c9;
@@ -52,7 +66,10 @@ body {
   transition: 0.3s;
 }
 
-.overlay a:hover, .overlay a:focus {
+.overlay-loading a:hover,
+.overlay-loading a:focus,
+.overlay a:hover,
+.overlay a:focus {
   color: #fff;
 }
 
@@ -79,6 +96,14 @@ body {
   text-align: center;
 }
 
+.overlay-loading-content {
+  position: relative;
+  top: 45%;
+  padding: 1rem;
+  /* width: 100%; */
+  text-align: center;
+}
+
 .overlay-content .title {
   font-size: 1.6rem;
   font-weight: bold;
@@ -95,6 +120,13 @@ body {
 .overlay-content .wp-logo img {
   width: 60px;
   margin-bottom: 1.1rem;
+}
+
+.overlay-loading #loading-message {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 2rem;
+  color: #fcfcfc;
 }
 
 @media screen and (min-width: 480px) {
