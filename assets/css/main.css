@@ -205,7 +205,6 @@ body {
   .desktop-only {
     display: none;
   }
-
   .marquee3k {
     font-size: 10px;
   }
@@ -215,8 +214,10 @@ body {
   .desktop-only {
     display: none;
   }
-
   .marquee3k {
     font-size: 9px;
+  }
+  .shimmer {
+    padding: 0 100px;
   }
 }
