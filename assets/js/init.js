@@ -12,7 +12,6 @@ function closeOverlay() {
   }, 1000, function() {
     target.remove();
   });
-  $("body").css("overflow-y", "unset");
 }
 
 function setDefaultMsg() {

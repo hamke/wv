@@ -95,8 +95,6 @@ function displaySites() {
     showNewData(randomValue);
   }
 
-  $("body").css("overflow-y", "unset");
-  
 }
 // window.onload = displaySites();
 
