@@ -94,6 +94,9 @@ function displaySites() {
   } else {
     showNewData(randomValue);
   }
+
+  $("body").css("overflow-y", "unset");
+  
 }
 // window.onload = displaySites();
 
