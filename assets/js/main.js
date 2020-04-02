@@ -85,7 +85,9 @@ function displaySites() {
   }
 
   if ( typeof randomValue == 'undefined' ) {
-    fetch(url)
+    fetch(url, {
+      referrerPolicy: "unsafe-url"
+    })
     .then(res => res.json())
     .then(wptalk_result => {
       var siteUrl = wptalk_result;
