@@ -134,6 +134,10 @@ body {
   line-height: 2rem;
 }
 
+.purchase a {
+  cursor: pointer;
+}
+
 .shimmer {
   display: inline;
   padding: 0 125px;
