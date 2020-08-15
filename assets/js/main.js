@@ -67,6 +67,23 @@ function onLoadCallback() {
   $('#overlay-loading').fadeOut('slow');
 }
 
+function fetchNewData() {
+  var queryString = window.location.search;
+  var urlParams = new URLSearchParams(queryString);
+  var urlInfo = urlParams.get('slug');
+  return fetch(url, {
+    referrerPolicy: "unsafe-url"
+  })
+  .then(res => res.json())
+  .then(randomValue => {
+    if ( randomValue !== urlInfo ) {
+      return randomValue;
+    } else {
+      return randomValue;
+    }
+  })
+}
+
 function displaySites() {
 
   clickCount++;
@@ -85,15 +102,9 @@ function displaySites() {
   }
 
   if ( typeof randomValue == 'undefined' ) {
-    fetch(url, {
-      referrerPolicy: "unsafe-url"
-    })
-    .then(res => res.json())
-    .then(wptalk_result => {
-      var siteUrl = wptalk_result;
-      var randomValue = siteUrl;
-      showNewData(randomValue);
-    })
+    fetchNewData().then(randomValue =>
+      showNewData(randomValue)
+    );
   } else {
     showNewData(randomValue);
   }
