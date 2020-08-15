@@ -67,7 +67,7 @@ function onLoadCallback() {
   $('#overlay-loading').fadeOut('slow');
 }
 
-function fetchNewData() {
+var fetchNewData = function() {
   var queryString = window.location.search;
   var urlParams = new URLSearchParams(queryString);
   var urlInfo = urlParams.get('slug');
@@ -79,7 +79,7 @@ function fetchNewData() {
     if ( randomValue !== urlInfo ) {
       return randomValue;
     } else {
-      return randomValue;
+      fetchNewData();
     }
   })
 }
