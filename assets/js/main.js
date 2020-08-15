@@ -79,7 +79,8 @@ var fetchNewData = function() {
     if ( randomValue !== urlInfo ) {
       return randomValue;
     } else {
-      fetchNewData();
+      // fetchNewData();
+      return randomValue;
     }
   })
 }
