@@ -12,7 +12,7 @@ const message = [
   //   "time_end": ""
   // },
   {
-    "url": "ㅜN/A",
+    "url": "N/A",
     "msg": "N/A",
     "time_start": "2020-03-06 00:00:00",
     "time_end": "2020-03-28 00:00:00"
