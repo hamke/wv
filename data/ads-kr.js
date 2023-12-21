@@ -8,7 +8,7 @@ const ads = [
   // },
   {
     "click": 5,
-    "url": "chinatalk.net",
+    "url": "japantalk.net",
     "url_target": "",
     "time_start": "",
     "time_end": ""
