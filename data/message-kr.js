@@ -6,8 +6,8 @@ const message = [
   //   "time_end": ""
   // },
   {
-    "url": "chinatalk.net",
-    "msg": "<a href=\"https://www.chinatalk.net/\" target=\"_blank\">차이나톡(ChinaTalk)</a>은 중국과 관련된 다양한 정보와 경험을 공유하는 온라인 커뮤니티입니다. 궁금한 점이나 나누고 싶은 정보가 있다면 지금 바로 참여해 보세요.",
+    "url": "japantalk.net",
+    "msg": "<a href=\"https://www.japantalk.net/\" target=\"_blank\">재팬톡(JapanTalk)</a>은 일본과 관련된 다양한 정보와 경험을 공유하는 온라인 커뮤니티입니다. 궁금한 점이나 나누고 싶은 정보가 있다면 지금 바로 참여해 보세요.",
     "time_start": "",
     "time_end": ""
   },
