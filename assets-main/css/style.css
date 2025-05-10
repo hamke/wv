@@ -2486,7 +2486,7 @@ figure.highlight .line,
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 110;
   background: rgba(0,0,0,0.5);
 }
 .ins-input-wrapper {
@@ -2527,7 +2527,7 @@ figure.highlight .line,
 .ins-search-container {
   left: 50%;
   top: 100px;
-  z-index: 101;
+  z-index: 201;
   bottom: 100px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

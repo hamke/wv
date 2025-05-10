@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equic="X-UA-Compatible" content="chrome=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <!-- <meta http-equiv="refresh" content="0; URL=https://www.wp-viewer.com/"> -->
     <title>WP-Viewer | WordPress Sites Random Viewer</title>
@@ -26,6 +27,41 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome-animation.min.css">
     <link rel="stylesheet" href="./assets/css/default.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <style>
+      .report-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 15px;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        z-index: 100;
+      }
+      .report-button:hover {
+        background-color: #d32f2f;
+      }
+      .success-message {
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border-radius: 4px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 9999;
+      }
+      .success-message.show {
+        opacity: 1;
+      }
+    </style>
     <script type="text/javascript">
       // if(window.location.protocol != 'http:') {
       //   location.href = location.href.replace("https://", "http://");
@@ -63,6 +99,59 @@
   </head>
 
   <body>
+
+    <div id="success-message" class="success-message">
+      신고가 접수되었습니다
+    </div>
+
+    <!-- https://www.wp-data.com/api/viewer/server/reported/ -->
+    <!-- http://localhost:8080/i/wp-data/public/api/viewer/server/reported/ -->
+
+    <button class="report-button"
+        hx-post="https://www.wp-data.com/api/viewer/server/reported/"
+        hx-trigger="click"
+        hx-vals="js:{
+          pageUrl: window.location.href,
+          targetUrl: getTargetUrl(window.location.href),
+          reportedAt: new Date().toISOString(),
+          userAgent: navigator.userAgent
+        }"
+        hx-swap="none"
+        hx-on::after-request="showSuccessMessage()">
+      이 사이트가 표시되지 않습니다
+    </button>
+
+    <script>
+      function getTargetUrl(url) {
+        const urlObj = new URL(url);
+        const targetUrl = urlObj.searchParams.get("url");
+        return targetUrl;
+      }
+      
+      function showSuccessMessage() {
+
+        // alert('신고가 접수되었습니다');
+
+        const successMessage = document.getElementById('success-message');
+        successMessage.classList.add('show');
+        
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 3000); // 3초 후 메시지 숨기기
+      }
+
+      // document.body.addEventListener('htmx:afterRequest', function(event) {
+      //   console.log('성공:', event.detail);
+      //   showSuccessMessage();
+      // });
+      
+      // HTMX 에러 처리
+      document.body.addEventListener('htmx:responseError', function(event) {
+        console.error('에러 발생:', event.detail);
+        alert('신고 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+      });
+    </script>
+
   	<div id="switcher">
   		<div class="center">
 
