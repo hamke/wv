@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="./../assets/css/default.css">
     <link rel="stylesheet" href="./assets/css/main.css">
     <script type="text/javascript">
-      if(window.location.protocol == 'http:') {
+      if( ( window.location.protocol == 'http:' ) && ( window.location.hostname != 'localhost' ) ) {
         location.href = location.href.replace("http://", "https://");
       }
       var clickCount = 0;
