@@ -19,8 +19,8 @@ if ( typeof siteUrl == 'undefined' ) {
 }
 
 // var fullUrl = 'http://' + siteUrl; // Unnecessary
-var iframeContent = '<iframe id="iframe" src="http://' + siteUrl + '/" frameborder="0" width="100%;"></iframe>';
-var footerUrl = '<a href="http://' + siteUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteUrl + ' <i class="fas fa-arrow-right"></i></a>';
+var iframeContent = '<iframe id="iframe" src="https://' + siteUrl + '/" frameborder="0" width="100%;"></iframe>';
+var footerUrl = '<a href="https://' + siteUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteUrl + ' <i class="fas fa-arrow-right"></i></a>';
 var element = document.getElementById("placeholder");
 document.getElementById("iframeTemplate").innerHTML = iframeContent;
 var template = document.getElementById("iframeTemplate");
