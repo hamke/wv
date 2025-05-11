@@ -2,10 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; URL=https://www.wp-data.com/viewer/log/">
+    <!-- <meta http-equiv="refresh" content="0; URL=https://www.wp-data.com/viewer/log/"> -->
     <meta name="robots" content="noindex, nofollow">
     <title>WP-Viewer Stats - WP-Viewer</title>
 		<link rel="shortcut icon" type="image/x-icon" href="./../assets/img/favicon.ico"/>
+
+    <script type="text/javascript">
+      if( window.location.hostname == 'localhost' ) {
+        location.href = 'http://localhost:8080/i/wp-data/public/viewer/log/';
+      } else {
+        location.href = 'https://www.wp-data.com/viewer/log/';
+      }
+    </script>
+
     <!-- Global site tag (gtag.js; WP-VIEWER.COM) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161163458-1"></script>
     <script>
