@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="./../assets/css/font-awesome-animation.min.css">
     <link rel="stylesheet" href="./../assets/css/default.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
     <script type="text/javascript">
       if( ( window.location.protocol == 'http:' ) && ( window.location.hostname != 'localhost' ) ) {
         location.href = location.href.replace("http://", "https://");
@@ -173,6 +174,24 @@
       </div>
     </div>
 
+    <div id="report-success-message" class="report-success-message">
+      您的举报已收到
+    </div>
+
+    <button class="report-button"
+        hx-post="https://www.wp-data.com/api/viewer/server/reported/"
+        hx-trigger="click"
+        hx-vals="js:{
+          pageUrl: window.location.href,
+          targetUrl: getTargetUrl(window.location.href),
+          reportedAt: new Date().toISOString(),
+          userAgent: navigator.userAgent
+        }"
+        hx-swap="none"
+        hx-on::after-request="showReportSuccessMessage()">
+        此网站无法显示
+    </button>
+
     <div class="marquee3k" id="marquee3k" data-speed="0.5" data-pausable="true">
       <span class="message">
         <!-- 按照用户的设备或网络环境, 特定网站的打开速度可能过慢。点击下面的链接就可以直接访问该网站。 -->
@@ -201,6 +220,7 @@
   <script src="./../assets/js/default.js"></script>
   <script src="./../assets/js/rocket-loader.js"></script>
   <script src="./../assets/js/marquee3k.js"></script>
+  <script src="./assets/js/custom.js"></script>
   <script>Marquee3k.init()</script>
   <!-- <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="e68bfa739f52eba6ee3109aa-|49" defer=""></script> -->
 
