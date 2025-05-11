@@ -18,7 +18,7 @@ if ( typeof siteUrl == 'undefined' ) {
   }
 }
 
-// var fullUrl = 'http://' + siteUrl; // Unnecessary
+// var fullUrl = 'https://' + siteUrl; // Unnecessary
 var iframeContent = '<iframe id="iframe" src="https://' + siteUrl + '/" frameborder="0" width="100%;"></iframe>';
 var footerUrl = '<a href="https://' + siteUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + siteUrl + ' <i class="fas fa-arrow-right"></i></a>';
 var element = document.getElementById("placeholder");
@@ -51,8 +51,8 @@ function showNewData( newUrl ) {
   }
   let new_uri = clean_uri + '?url=' + newUrl;
   window.history.replaceState({}, document.title, new_uri);
-  let iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="http://' + newUrl + '/" frameborder="0" width="100%;"></iframe>';
-  let footerUrl = '<a href="http://' + newUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + newUrl + ' <i class="fas fa-arrow-right"></i></a>';
+  let iframeContent = '<iframe id="iframe" onload="onLoadCallback()" src="https://' + newUrl + '/" frameborder="0" width="100%;"></iframe>';
+  let footerUrl = '<a href="https://' + newUrl + '/" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe"></i> ' + newUrl + ' <i class="fas fa-arrow-right"></i></a>';
   let element = document.getElementById("placeholder");
   document.getElementById("iframeTemplate").innerHTML = iframeContent;
   let template = document.getElementById("iframeTemplate");
@@ -116,10 +116,10 @@ function displaySites() {
 // window.onload = displaySites();
 
 function adClick() {
-  var currentUrl = document.getElementById("footer-banner").querySelector('a').href; // http://example.com ;
+  var currentUrl = document.getElementById("footer-banner").querySelector('a').href; // https://example.com ;
   if ( typeof ads !== 'undefined' && ads.length > 0 ) {
     for ( var z = 0; z < ads.length; z++ ) {
-      if ( currentUrl == ( 'http://' + ads[z]['url'] + '/' ) ) {
+      if ( currentUrl == ( 'https://' + ads[z]['url'] + '/' ) ) {
         window.open( ads[z]['url_target'], "_blank");
         break;
       }
