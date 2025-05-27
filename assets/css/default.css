@@ -325,6 +325,39 @@ a {
   box-shadow: 0 1px 0 #ff8b4c inset, 1px 1px 3px #ff772d
 }
 
+.purchase #language-selector {
+  background: none;
+  box-shadow: none;
+  color: #fff;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.purchase #language-selector-menu {
+  display:none;
+  position:absolute;
+  right:10px;
+  top:60px;
+  background:#000;
+  color: #fff;
+  font-size: 14px;
+  padding:10px;
+  z-index:1000;
+}
+
+.purchase #language-selector-menu a {
+  background: none;
+  border-color: initial;
+  box-shadow: none;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: none;
+}
+
+.purchase #language-selector-menu a:hover {
+  background-color: #333;
+}
+
 .close a {
   padding: 9px 15px 10px 10px;
   float: left;

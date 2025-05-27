@@ -148,3 +148,17 @@ $(window).resize(function() {
   calcHeight();
 });
 
+// Language Selector
+function langSelectMenu() {
+  const menu = document.getElementById('language-selector-menu');
+  menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+}
+
+// Optional: hide menu on outside click
+document.addEventListener('click', function(event) {
+  const selector = document.getElementById('language-selector');
+  const menu = document.getElementById('language-selector-menu');
+  if (!selector.contains(event.target) && !menu.contains(event.target)) {
+    menu.style.display = 'none';
+  }
+});
