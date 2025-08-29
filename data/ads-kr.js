@@ -8,7 +8,7 @@ const ads = [
   // },
   {
     "click": 5,
-    "url": "japantalk.net",
+    "url": "wp-kr.com",
     "url_target": "",
     "time_start": "",
     "time_end": ""
