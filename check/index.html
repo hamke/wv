@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Iframe View Checker - WP-DATA.COM</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./../assets/img/favicon.ico" />
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="./" class="navbar-brand">Iframe View Checker</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row" style="margin-top:15em;">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+          <form method="get" role="search">
+            <div class="input-group form-search">
+              <input type="text" name="url" value="" id="url" class="form-control search-query" autofocus placeholder="">
+              <span class="input-group-btn">
+                <button onclick="openWindow()" class="btn btn-primary" data-type="last">GO</button>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4">
+        </div>
+      </div>
+    </div>
+
+    <footer style="margin-top:10em;"><!-- フッター -->
+    <p class="text-center">&copy; <span class="post-year"></span> <a href="./../" target="_blank">WP-DATA.COM</a>. All Rights Reserved.</p>
+    </footer><!-- フッター -->
+
+    <script src="./js/date.js"></script>
+
+    <script>
+        function openWindow() {
+          var urlParam = document.getElementById('url').value;
+          if ( urlParam != '' ) {
+            window.open("https://www.wp-viewer.com/?url=" + urlParam, "_blank");
+          } else {
+            return false;
+          }
+        }
+    </script>
+
+  </body>
+</html>
+
+<!-- Localized -->
