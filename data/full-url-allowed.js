@@ -23,6 +23,10 @@ const full_url_allowed = [
     "fixed": "no"
   },
   {
+    "url": "k-theme.com",
+    "fixed": "no"
+  },
+  {
     "url": "news.wp-item.com",
     "fixed": "no"
   },
