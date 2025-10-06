@@ -98,6 +98,9 @@ function displaySites() {
 
   document.getElementById("overlay-ad").style.display="none";
 
+  jQuery(".responsive a").removeClass("active");
+  jQuery(".responsive a.desktop").addClass("active");
+
   if ( typeof ads !== 'undefined' && ads.length > 0 ) {
     for ( var d = 0; d < ads.length; d++ ) {
       if ( ( clickCount == ads[d]['click'] ) && ( ads[d]['click'] !== '' ) && ( ads[d]['click'] > 0 ) ) {
