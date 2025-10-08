@@ -20,6 +20,9 @@ body {
   font-size: 1rem;
   letter-spacing: 2px;
   z-index: 98;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .marquee3k {
